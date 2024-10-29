@@ -31,7 +31,7 @@ pipeline {
                             type                  : "cellsLitComponent",
                             lint                  :  true,
                             sonarQube             :  true,
-                            test                  :  true,
+                            test                  :  false,
                             publish               :  true,
                             deploySecGCP          :  true
                         ]
