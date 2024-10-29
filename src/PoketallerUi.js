@@ -1,3 +1,5 @@
+//Todas las importaciones
+
 import { LitElement, html, css } from 'lit-element';
 import { getComponentSharedStyles } from '@bbva-web-components/bbva-core-lit-helpers';
 import styles from './poketaller-ui.css.js';
@@ -32,24 +34,26 @@ export class PoketallerUi extends LitElement {
 
 async firstUpdated() {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
-  pokemondm.pokemonCount = this.pokemonCount;  // Asigna el conteo aquí
-  this.loading = true;  // Opcional: activa la carga en la interfaz si es necesario
+  pokemondm.pokemonCount = this.pokemonCount;  // se asigna el conteo aquí
+  this.loading = true;  // activa la carga en la interfaz si es necesario
   await pokemondm.fetchPokemon();  // Obtiene los datos
-  this.pokemons = pokemondm.pokemons;  // Asigna los datos de `PoketallerDm`
+  this.pokemons = pokemondm.pokemons;  // Asigna los datos de PoketallerDm
   this.loading = false;
 }
 
 
 // Método para actualizar pokemonCount cuando el usuario cambia el valor en el input
+  
 updatePokemonCount(event) {
   this.pokemonCount = Number(event.target.value);
 }
 
 // Método para manejar el clic del botón de carga
+  
 async handleFetchButtonClick() {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
   pokemondm.pokemonCount = this.pokemonCount;  // Asigna el nuevo valor de pokemonCount a PoketallerDm
-  this.loading = true;  // Opcional: activa el indicador de carga
+  this.loading = true;  // activa el indicador de carga
   await pokemondm.fetchPokemon();  // Llama al método en PoketallerDm
   this.pokemons = pokemondm.pokemons;  // Asigna los resultados a la propiedad pokemons
   this.loading = false;  // Desactiva el indicador de carga
@@ -73,10 +77,10 @@ async handleFetchButtonClick() {
 async fetchEvolutions(pokemonId) {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
   
-  // Llama a `fetchEvolutions` en PoketallerDm con el `pokemonId`
+  // Llama al fetchEvolutions en PoketallerDm con el pokemonId
   await pokemondm.fetchEvolutions(pokemonId);
   
-  // Asigna los resultados a `selectedPokemonEvolutions` en PoketallerUi
+  // Asigna los resultados a selectedPokemonEvolutions en PoketallerUi
   this.selectedPokemonEvolutions = pokemondm.selectedPokemonEvolutions;
   this.showModal = true;  // Muestra el modal
 }
