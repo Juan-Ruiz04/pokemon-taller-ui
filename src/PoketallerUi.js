@@ -32,10 +32,10 @@ export class PoketallerUi extends LitElement {
 
 async firstUpdated() {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
-  pokemondm.pokemonCount = this.pokemonCount;  // Assign count here
-  this.loading = true;  // Optional: trigger loading in UI if needed
-  await pokemondm.fetchPokemon();  // Fetch data
-  this.pokemons = pokemondm.pokemons;  // Assign data from `PoketallerDm`
+  pokemondm.pokemonCount = this.pokemonCount;  // Asigna el conteo aquí
+  this.loading = true;  // Opcional: activa la carga en la interfaz si es necesario
+  await pokemondm.fetchPokemon();  // Obtiene los datos
+  this.pokemons = pokemondm.pokemons;  // Asigna los datos de `PoketallerDm`
   this.loading = false;
 }
 
