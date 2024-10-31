@@ -1,67 +1,64 @@
-# @pokedex/poketaller-ui
+### Poketaller UI
 
-## Package info
+## Descripción del Componente
 
-### Package installation
+- * Poketaller UI es un componente de interfaz de usuario diseñado para mostrar una lista de Pokémon, permitiendo a los usuarios buscar y cargar más Pokémon, así como visualizar las evoluciones de cada uno.
 
-Installation using NPM
+# Objetivos del Componente
 
-```bash
-npm install @pokedex/poketaller-ui
-```
+- * Mostrar una lista de Pokémon con información relevante (nombre, imagen, tipos).
+- * Permitir a los usuarios buscar y cargar más Pokémon.
+- * Visualizar las evoluciones de cada Pokémon.
 
-### Entry points & exports
+* Propiedades y Métodos
 
-- (Default entry point)
-  - PoketallerUi (Class)
-- poketaller-ui.js
-  - poketaller-ui (Custom Element)
+## Propiedades
+
+- * name: Nombre del componente (tipo String).
+- * pokemons: Lista de Pokémon (tipo Array).
+- * pokemonCount: Número de Pokémon a cargar (tipo Number).
+- * loading: Indicador de carga (tipo Boolean).
+- * selectedPokemonEvolutions: Lista de evoluciones del Pokémon seleccionado (tipo Array).
+- * showModal: Indicador para mostrar el modal de evoluciones (tipo Boolean).
+
+## Métodos
+
+- * firstUpdated(): Método que se ejecuta al iniciar el componente, carga los Pokémon y asigna los valores iniciales.
+- * updatePokemonCount(event): Método que actualiza el valor de pokemonCount cuando el usuario cambia el valor en el input.
+- * handleFetchButtonClick(): Método que maneja el clic del botón de carga, carga más Pokémon y actualiza la lista.
+- * fetchEvolutions(pokemonId): Método que obtiene las evoluciones de un Pokémon específico y muestra el modal.
+- * closeModal(): Método que cierra el modal de evoluciones.
+
+## Estilos
+
+- * Los estilos se encuentran en el archivo poketaller-ui.scss.
+
+##Uso
+
+Para utilizar este componente, simplemente importa el archivo JavaScript y agrega el componente <poketaller-ui> a tu componente que has chreado dentro de src.
 
 
-## PoketallerUi (Class) poketaller-ui (Custom Element) 
+<poketaller-ui></poketaller-ui>
 
-### Extends from
 
-LitElement (lit-element package)
+## Dependencias
 
-### Usage
+- * lit-element
+- * @bbva-web-components/bbva-core-lit-helpers
+- * @bbva-web-components/bbva-button-default
+- * @bbva-web-components/bbva-progress-content
+- * @pokedex/poketaller/poketaller-dm
 
-Import and extend the class:
 
-```js
-import { PoketallerUi } from '@pokedex/poketaller-ui';
+## Contribución
 
-class ExampleElement extends PoketallerUi {
-  ...
-}
-```
+Para contribuir a este proyecto, por favor sigue los siguientes pasos:
 
-Use the custom element (defined globally):
+1. Clona el repositorio.
+2. Crea una rama para tu contribución.
+3. Realiza tus cambios y commit.
+4. Envía un pull request.
 
-```js
-import '@pokedex/poketaller-ui/poketaller-ui.js';
-```
+## Autores
 
-```html
-<poketaller-ui ...>
-  ...
-</poketaller-ui>
-```
-
-### Description
-
-![LitElement component](https://img.shields.io/badge/litElement-component-blue.svg)
-
-This component ...
-
-Example:
-
-```html
-  <poketaller-ui></poketaller-ui>
-```
-
-### Properties
-
-- **name**: string = "Cells" (attribute: name)
-    Description for property
-"# poketaller-ui"  
+- * Juan LUis Mejia Ruiz
