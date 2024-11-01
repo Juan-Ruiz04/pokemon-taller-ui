@@ -1,5 +1,3 @@
-//Todas las importaciones
-
 import { LitElement, html, css } from 'lit-element';
 import { getComponentSharedStyles } from '@bbva-web-components/bbva-core-lit-helpers';
 import styles from './poketaller-ui.css.js';
@@ -28,35 +26,29 @@ export class PoketallerUi extends LitElement {
     this.loading = false;
     this.selectedPokemonEvolutions = [];
     this.showModal = false;
-  
   }
-//ejecuta la logica que está en pokemondm
-
 async firstUpdated() {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
-  pokemondm.pokemonCount = this.pokemonCount;  // se asigna el conteo aquí
-  this.loading = true;  // activa la carga en la interfaz si es necesario
-  await pokemondm.fetchPokemon();  // Obtiene los datos
-  this.pokemons = pokemondm.pokemons;  // Asigna los datos de PoketallerDm
+  pokemondm.pokemonCount = this.pokemonCount;  
+  this.loading = true;  
+  await pokemondm.fetchPokemon();
+  this.pokemons = pokemondm.pokemons; 
   this.loading = false;
 }
 
 
-// Método para actualizar pokemonCount cuando el usuario cambia el valor en el input
-  
+
 updatePokemonCount(event) {
   this.pokemonCount = Number(event.target.value);
 }
 
-// Método para manejar el clic del botón de carga
-  
 async handleFetchButtonClick() {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
-  pokemondm.pokemonCount = this.pokemonCount;  // Asigna el nuevo valor de pokemonCount a PoketallerDm
-  this.loading = true;  // activa el indicador de carga
-  await pokemondm.fetchPokemon();  // Llama al método en PoketallerDm
-  this.pokemons = pokemondm.pokemons;  // Asigna los resultados a la propiedad pokemons
-  this.loading = false;  // Desactiva el indicador de carga
+  pokemondm.pokemonCount = this.pokemonCount;  
+  this.loading = true;  
+  await pokemondm.fetchPokemon();  
+  this.pokemons = pokemondm.pokemons;  
+  this.loading = false;  
 }
 
 
@@ -67,28 +59,20 @@ async handleFetchButtonClick() {
       getComponentSharedStyles('poketaller-ui-shared-styles'),
       css`
 
-      /*los esttilos se encuentran en (poketaller-ui.scss)*/  
-      `
-      
     ];
   }
 
-// Método para obtener las evoluciones de un Pokémon específico
+
 async fetchEvolutions(pokemonId) {
   const pokemondm = this.shadowRoot.querySelector('#pokemondm');
-  
-  // Llama al fetchEvolutions en PoketallerDm con el pokemonId
   await pokemondm.fetchEvolutions(pokemonId);
-  
-  // Asigna los resultados a selectedPokemonEvolutions en PoketallerUi
   this.selectedPokemonEvolutions = pokemondm.selectedPokemonEvolutions;
   this.showModal = true;  // Muestra el modal
 }
 
-// Método para cerrar el modal
 closeModal() {
   this.showModal = false;
-  this.selectedPokemonEvolutions = [];  // Limpia las evoluciones seleccionadas
+  this.selectedPokemonEvolutions = [];
 }
 
 render() {
@@ -97,14 +81,11 @@ render() {
 
     <div class="input-container">
       <input type="number" placeholder="Ingresa la cantidad que deseas ver" 
-             @input="${this.updatePokemonCount}" min="1" max="1010" />
+      @input="${this.updatePokemonCount}" min="1" max="1010" />
       <bbva-button-default @click="${this.handleFetchButtonClick}" 
-                           style="margin-left: 10px;">Cargar Pokémon</bbva-button-default>
+      style="margin-left: 10px;">Cargar Pokémon</bbva-button-default>
     </div>
-
     <bbva-progress-content ?visible="${this.loading}"></bbva-progress-content>
-
-    <!-- Contenedor de tarjetas de Pokémon -->
     <div class="card-container">
       ${this.pokemons.map(pokemon => html`
         <div class="pokemon-card">
@@ -117,7 +98,6 @@ render() {
       `)}
     </div>
 
-    <!-- Modal para las evoluciones -->
     ${this.showModal ? html`
       <div class="modal">
         <div class="modal-content">
@@ -135,8 +115,6 @@ render() {
         </div>
       </div>
     ` : ''}
-
-    <!-- Aquí insertamos el componente PoketallerDm -->
     <poketaller-dm id="pokemondm"></poketaller-dm>
   `;
 }
